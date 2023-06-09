@@ -1,5 +1,4 @@
 #pragma once
-
 #include <iostream>
 #include <list>
 #include <exception>
@@ -29,11 +28,11 @@ public:
      * @param t The element to be inserted.
      */
     void push(const T& t) {
-        auto it = elements.begin();
-        while (it != elements.end() && comp(*it, t) < 0) {
+        auto it = _elements.begin();
+        while (it != _elements.end() && _comp(*it, t) < 0) {
             ++it;
         }
-        elements.insert(it, t);
+        _elements.insert(it, t);
     }
 
     /**
@@ -42,15 +41,16 @@ public:
      * @throws std::runtime_error if the priority queue is empty.
      */
     T poll() {
-        if (elements.empty()) {
+        if (_elements.empty()) {
             throw std::runtime_error("PriorityQueue empty!");
         }
-        T highestPriorityElement = elements.front();
-        elements.pop_front();
+        T highestPriorityElement = _elements.front();
+        _elements.pop_front();
         return highestPriorityElement;
     }
 
 private:
-    std::list<T> elements;       // List of elements in the priority queue
-    MyComparator<T> comp;        // Comparator for determining the position in the queue
+    std::list<T> _elements;       // List of elements in the priority queue
+    MyComparator<T> _comp;        // Comparator for determining the position in the queue
 };
+
