@@ -1,7 +1,22 @@
 #include "Dog.h"
 
 Dog::Dog(int age, int weight, string name) :
-	m_age(age), m_weight(weight), m_name(name) {}
+	_age(age), _weight(weight), _name(name) {}
+
+int Dog::getAge() const
+{
+	return _age;
+}
+
+int Dog::getWeight() const
+{
+	return _weight;
+}
+
+string Dog::getName() const
+{
+	return  _name;
+}
 
 
 
